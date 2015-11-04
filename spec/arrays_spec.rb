@@ -70,3 +70,19 @@ describe "#my_transpose" do
             end
 
 end
+
+
+describe "#stock_picker" do
+  it "picks the correct days to buy and sell" do
+    expect( stock_picker( [1000,50,45,80,15,200] )).to eq([4,5])
+  end
+
+  it "returns a blank array if stock never increases" do
+    expect( stock_picker( [1000,500,450,80,15,2] )).to eq([])
+  end
+
+  it "returns the earliers profitable time when there are two equally profitable day pairs" do
+    expect( stock_picker( [0,50,45,20,0,50] )).to eq([0,1])
+  end
+
+end
