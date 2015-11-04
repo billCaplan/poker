@@ -30,5 +30,43 @@ describe "#two_sum" do
   it "return a blank array when given a blank array" do
     expect([].two_sum).to eq([])
   end
-  
+
+end
+
+describe "#my_transpose" do
+
+  it "transposes a 3x3 matrix" do
+    expect(my_transpose([
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8]])).to eq(
+              [[0, 3, 6],
+              [1, 4, 7],
+              [2, 5, 8]])
+ end
+
+  it "handles a 4x4 matrix" do
+    expect(my_transpose([
+    [0, 1, 2, 5],
+    [3, 4, 5, 5],
+    [6, 7, 8, 7],
+    [6, 0, 8, 7]])).to eq([
+              [0, 3, 6, 6],
+              [1, 4, 7, 0],
+              [2, 5, 8, 8],
+              [5, 5, 7, 7]])
+            end
+
+  it "transposes rectangular matricies" do
+    expect(my_transpose([
+    [0, 1, 2, 5],
+    [3, 4, 5, 5],
+    [6, 7],
+    [6, 0]])).to eq([
+              [0, 3, 6, 6],
+              [1, 4, 7, 0],
+              [2, 5, nil, nil],
+              [5, 5, nil, nil]])
+            end
+
 end

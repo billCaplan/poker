@@ -22,5 +22,8 @@ class Array
     sums
   end
 
+end
 
+def my_transpose(matrix)
+  matrix.shift.zip(*matrix[0..-1])
 end
