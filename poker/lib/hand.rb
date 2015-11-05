@@ -2,16 +2,18 @@ require 'byebug'
 require_relative 'card'
 
 class Hand
+  attr_accessor :cards
+  
   def initialize(deck)
     @deck = deck
-    @cards = [Card.new(5, :heart), Card.new(6, :heart), Card.new(2, :heart), Card.new(8, :heart), Card.new(9, :heart)]
-    #@cards = populate.sort_by {|card| card.face_value}
+    #@cards = [Card.new(5, :heart), Card.new(6, :heart), Card.new(2, :heart), Card.new(8, :heart), Card.new(9, :heart)]
+    @cards = populate.sort_by {|card| card.face_value}
   end
 
   def populate
     hand = []
     5.times do
-      hand << @deck.shift
+      hand << @deck.cards.shift
     end
     hand
   end
@@ -55,7 +57,6 @@ class Hand
   end
 
   def full_house?
-    #debugger
     result = Hash.new {|h,k| h[k] = 0}
     @cards.each do |card|
       result[card.face_value] += 1
@@ -117,10 +118,10 @@ class Hand
 
 end
 
-h = Hand.new("dummy deck")
-p h.four_of_a_kind?
-p h.two_pair?
-p h.flush?
-p h.straight?
-p h.straight_flush?
-p h.full_house?
+# h = Hand.new("dummy deck")
+# p h.four_of_a_kind?
+# p h.two_pair?
+# p h.flush?
+# p h.straight?
+# p h.straight_flush?
+# p h.full_house?

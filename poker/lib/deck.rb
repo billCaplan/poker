@@ -21,3 +21,6 @@ class Deck
 
 
 end
+
+# deck = Deck.new
+# p deck.cards

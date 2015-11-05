@@ -5,8 +5,8 @@ require_relative "card"
 class Display
   include Cursorable
 
-  def initialize
-    @hand = [[Card.new(7, :spade), 2, 3, 5, 6]]
+  def initialize(hand)
+    @hand = hand.cards
     @cursor_pos = [0, 0]
     @commands = [["Done", "", "", "", ""],
                  ["Raise", "", "", "", ""],

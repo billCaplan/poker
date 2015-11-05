@@ -12,7 +12,7 @@ class Card
   end
 
   def to_s
-    "#{@suit}: #{@face_value}"
+    " #{@face_value} of #{@suit}s "
 
   end
 

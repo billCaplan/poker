@@ -2,14 +2,21 @@ require_relative 'hand'
 require_relative 'display'
 
 class Player
-  attr_accessor :balance, :hand
+  attr_accessor :balance
+  attr_reader :hand
 
   def initialize(balance)
     @balance = balance
-    @display = Display.new
+    @hand = []
+  end
+
+  def hand=(hand)
+    p "hand recieved"
+    @hand = hand
   end
 
   def test_render
+    @display = Display.new(@hand)
     input = nil
     until input
       @display.render
@@ -57,5 +64,5 @@ class Player
 
 end
 
-julio = Player.new(80000)
-julio.test_render
+# julio = Player.new(80000)
+# julio.test_render
