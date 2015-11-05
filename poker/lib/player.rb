@@ -8,6 +8,7 @@ class Player
   def initialize(balance)
     @balance = balance
     @hand = []
+    @bet_amount_per_turn = 0
   end
 
   def hand=(hand)
@@ -23,8 +24,23 @@ class Player
       input = @display.get_input
       @display.render
     end
-    p input
+    input
   end
+
+  def standard_raise(this_round_ante)
+    sum = this_round_ante + 5
+    @balance -= sum
+    @bet_amount_per_turn += sum
+    return sum
+  end
+
+  def call(this_round_ante)
+    @balance -= this_round_ante
+    @bet_amount_per_turn += this_round_ante
+    return this_round_ante
+  end
+
+  
   #
   # def prompt(action)
   #   response =
@@ -58,9 +74,7 @@ class Player
   #
   # end
   #
-  # def call
-  #
-  # end
+
 
 end
 

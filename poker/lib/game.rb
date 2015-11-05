@@ -8,6 +8,7 @@ class Game
     @deck = Deck.new
     @players = players
     @pot = 0
+    @this_round_ante = 5
   end
 
   def play
@@ -37,7 +38,20 @@ class Game
 
   def take_bets
     @players.each do |player|
-      player.test_render
+      case player.test_render
+      when [1, 0] # Done
+
+      when [2, 0] # Raise
+        @pot += player.standard_raise(@this_round_ante)
+        p @pot
+      when [3, 0] # Call
+        @pot += player.call(@this_round_ante)
+        p @pot
+      when [4, 0] # Fold
+        @players.remove(player)
+        p @players
+      end
+
     end
   end
 
